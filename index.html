@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EgoBlox Web App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Global Reset and Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: linear-gradient(135deg, #4e73df, #1e3d8c); /* Gradient background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #d1e7ff !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-color: #0056b3;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #fff;
+            width: 0;
+            animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: #e1eaff;
+        }
+
+        /* Typing Effect Keyframes */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Modal Customization */
+        .modal-header {
+            background-color: #1e3d8c;
+            color: white;
+        }
+
+        .modal-body {
+            background-color: #f9f9f9;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .section-header {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0056b3;
+            margin-bottom: 30px;
+        }
+
+        /* Dashboard Styling */
+        .dashboard {
+            padding: 60px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .dashboard h2 {
+            font-size: 2rem;
+            color: #0056b3;
+        }
+
+        .dashboard .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #f8f9fa;
+            margin: 20px 0;
+        }
+
+        .dashboard .card-title {
+            font-size: 1.5rem;
+        }
+
+        .dashboard .card-body {
+            font-size: 1.2rem;
+            color: #333;
+        }
+          /* Global Reset and Body Styling */
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: linear-gradient(135deg, #4e73df, #1e3d8c); /* Gradient background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #d1e7ff !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-color: #0056b3;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #fff;
+            width: 0;
+            animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: #e1eaff;
+        }
+
+        /* Typing Effect Keyframes */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .section-header {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0056b3;
+            margin-bottom: 30px;
+        }
+
+        .card-custom {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-custom h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card-custom p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Supported Networks Section */
+        .networks-section {
+            background-color: #f9fafb;
+            padding: 60px 0;
+        }
+
+        .networks-section .network-logos {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .network-logos img {
+            max-width: 100px;
+            max-height: 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .network-logos img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .testimonial-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0056b3;
+        }
+
+        .testimonial-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: #d1e7ff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .card-custom {
+                margin-bottom: 30px;
+            }
+
+            .network-logos img {
+                max-width: 80px;
+                max-height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">EgoBlox</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#walletModal">Connect Wallet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div>
+            <h1>Welcome to EgoBlox</h1>
+            <p>Your gateway to seamless blockchain transactions and utilities.</p>
+            <button class="btn btn-light">Get Started</button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wallet Modal -->
+    <div class="modal fade" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="walletModalLabel">Connect Wallet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <button class="btn btn-secondary w-100">Connect MetaMask</button>
+                    <button class="btn btn-secondary w-100 mt-3">Connect WalletConnect</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#emailSignupModal">Sign up with Email</button>
+                    <button class="btn btn-danger w-100 mt-3">Sign up with Google</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Sign Up Modal -->
+    <div class="modal fade" id="emailSignupModal" tabindex="-1" aria-labelledby="emailSignupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="emailSignupModalLabel">Email Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="signupEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard (for when Google is selected) -->
+    <div class="dashboard" style="display:none;">
+        <h2>Welcome, User!</h2>
+        <div class="card">
+            <h5 class="card-title">Your Balance (USD)</h5>
+            <div class="card-body">$1,250.00</div>
+        </div>
+        <div class="card">
+            <h5 class="card-title">Services</h5>
+            <button class="btn btn-success w-100">Pay Bill</button>
+            <button class="btn btn-warning w-100 mt-3">Send Money</button>
+        </div>
+    </div>
+
+    <!-- Our Services Section -->
+    <section id="services" class="section">
+        <div class="container text-center">
+            <div class="card-custom">
+                <h2 class="section-header">Our Services</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Utility Payments</h3>
+                        <p>Pay bills effortlessly.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Token Transfers</h3>
+                        <p>Send and receive tokens using Base names or Telegram usernames.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Gasless Transactions</h3>
+                        <p>Enjoy gas-free transactions with smart accounts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Networks Section -->
+    <section id="networks" class="networks-section">
+        <div class="container text-center">
+            <div class="card-custom">
+                <h2 class="section-header">Supported Networks</h2>
+                <div class="network-logos">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQggiCfZIvoqQNXujcE-9KI8nOFYZCQtgQgcA&s" alt="Base">
+                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">
+                    <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance Smart Chain">
+                    <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="Polygon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section id="testimonials" class="testimonial-section">
+        <div class="container text-center">
+            <div class="card-custom">
+                <h2 class="section-header">What Our Users Say</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="User 1">
+                            <h5>John Doe</h5>
+                            <p>"EgoBlox made my transactions seamless and hassle-free. Highly recommend!"</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/women/61.jpg" alt="User 2">
+                            <h5>Jane Smith</h5>
+                            <p>"I love how easy it is to connect my wallet and make payments. A fantastic app!"</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="User 3">
+                            <h5>Sam Wilson</h5>
+                            <p>"Fast, secure, and reliable. EgoBlox is my go-to for blockchain transactions."</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User 4">
+                            <h5>Emily Davis</h5>
+                            <p>"The interface is simple, and I never face issues with payments. Truly a great service!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 EgoBlox. All rights reserved.</p>
+            <p>Follow us on: <a href="#">Twitter</a> | <a href="#">Facebook</a> | <a href="#">LinkedIn</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Placeholder for Google Sign-In Logic
+        document.querySelector('.btn-danger').addEventListener('click', function() {
+            // Here you would call the Google API to sign in
+            alert("Redirecting to Google Sign-In...");
+            // Simulate login and show the dashboard
+            document.querySelector('.dashboard').style.display = 'block';
+            document.querySelector('#signupModal').modal('hide');
+        });
+        
+    </script>
+</body>
+</html>
